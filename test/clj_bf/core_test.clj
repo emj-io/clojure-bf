@@ -49,3 +49,24 @@
 (deftest test-memory-expansion
   (testing "expanding memory with multiple moves"
     (is (= [0 0 0 0 1] (interpret ">>>>+")))))
+
+(deftest test-bracket-matching
+  (testing "matching-right finds closing bracket"
+    (is (= 5 (matching-right "++[++]+" 2))))
+  
+  (testing "matching-left finds opening bracket" 
+    (is (= 2 (matching-left "++[++]+" 5))))
+  
+  (testing "unmatched brackets return nil"
+    (is (= nil (matching-right "++[++" 2)))
+    (is (= nil (matching-left "++]+" 2)))))
+
+(deftest test-simple-loops
+  (testing "empty loop is skipped"
+    (is (= [0] (interpret "[+++]"))))
+  
+  (testing "simple copy loop"
+    (is (= [0 3] (interpret "+++[>+<-]"))))
+  
+  (testing "nested loops"
+    (is (= [0 0 6] (interpret "+++[>++[>+<-]<-]")))))
