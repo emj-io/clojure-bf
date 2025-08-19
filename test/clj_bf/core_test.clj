@@ -1,6 +1,6 @@
 (ns clj-bf.core-test
   (:require [clojure.test :refer [deftest is testing]]
-            [clj-bf.core :refer [interpret]]))
+            [clj-bf.core :refer [interpret matching-right matching-left]]))
 
 (defn capture-output [f]
   (let [out (java.io.StringWriter.)]
@@ -38,3 +38,14 @@
   
   (testing "move right then left"
     (is (= [3 0] (interpret "+++><")))))
+
+(deftest test-edge-cases
+  (testing "process valid chars only"
+    (is (= [4] (interpret "++x+y+"))))
+  
+  (testing "only invalid characters"
+    (is (= [0] (interpret "xyz")))))
+
+(deftest test-memory-expansion
+  (testing "expanding memory with multiple moves"
+    (is (= [0 0 0 0 1] (interpret ">>>>+")))))
