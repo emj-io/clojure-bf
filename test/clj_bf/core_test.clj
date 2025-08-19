@@ -70,3 +70,10 @@
   
   (testing "nested loops"
     (is (= [0 0 6] (interpret "+++[>++[>+<-]<-]")))))
+
+(deftest test-hello-world
+  (testing "Hello World program executes without errors"
+    (let [hello-world "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
+          result (interpret hello-world)]
+      (is (vector? result))
+      (is (> (count result) 0)))))
