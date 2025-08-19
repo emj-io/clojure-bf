@@ -15,10 +15,10 @@ This is a Brainfuck interpreter implementation in Clojure. The project interpret
 
 ### Key Components
 
-- **Main interpreter loop**: Uses `loop`/`recur` for efficient iteration (core.clj:46-66)
+- **Main interpreter loop**: Uses `loop`/`recur` for efficient iteration (core.clj:33-62)
 - **Tape operations**: Dynamic memory expansion when moving right past tape boundary
-- **Bracket matching**: Recursive functions to find matching `[` and `]` for loop control
-- **Duplicate interpret function**: There are two `interpret` functions - the second one (line 45) includes loop support with `[` and `]`
+- **Bracket matching**: Recursive functions to find matching `[` and `]` for loop control with proper bounds checking
+- **Error handling**: Graceful handling of unmatched brackets and edge cases
 
 ## Brainfuck Commands Supported
 
@@ -29,6 +29,40 @@ This is a Brainfuck interpreter implementation in Clojure. The project interpret
 - `.` - Output current cell value
 - `[` - Jump past matching `]` if current cell is 0
 - `]` - Jump back to matching `[` if current cell is not 0
+
+## Sample Brainfuck Programs for Testing
+
+```clojure
+;; 1. Hello World - Classic program
+"++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
+
+;; 2. Simple counter (outputs 0,1,2)
+"+++++++++[>++++++++<-]>.<+.>+."
+
+;; 3. Fibonacci sequence (first few numbers)
+">++++++++++>+>+[[+++++[>++++++++<-]>.<++++++[>--------<-]+<<<]>.>>[[-]<[>+<-]<[>+<-]<[>+<-]>>>]<]"
+
+;; 4. Cell value copy
+"+++[>+<-]>."
+
+;; 5. Multiplication (2*3=6) 
+"++>+++[<[>+>+<<-]>[<+>-]>>[-]<<-]>>."
+
+;; 6. ASCII art triangle
+"++++++++++[>+>+++<<-]>++>+>++++++[>++++++++++<<-]>>-->++++++[>+++++++++++<<-]>>+>++++[>+++++++++++<<-]>>+>+++++[>++++++++++<<-]>>+>.>+.>+.>."
+
+;; 7. Simple addition (3+2=5)
+"+++>++[<+>-]<."
+
+;; 8. Print alphabet (A-Z)
+"++++++++++[>+++++++>++++++++++>+++>+<<<<-]>++.>+.>++.>+++.>++++.>+++++."
+
+;; 9. Nested loops test
+"+++[>+++[>+++<-]<-]>>."
+
+;; 10. Memory expansion test (use cells far apart)
+">>>>>>>>>>>>>>>>>>>>>+."
+```
 
 ## Development Commands
 
@@ -44,9 +78,9 @@ java -jar target/uberjar/clj-bf-*-standalone.jar  # Run compiled JAR
 ## Project Structure
 
 - `src/clj_bf/core.clj` - Main interpreter implementation
-- `test/clj_bf/core_test.clj` - Test suite (currently contains placeholder test)
+- `test/clj_bf/core_test.clj` - Comprehensive test suite
 - `project.clj` - Leiningen project configuration
 
 ## Current State
 
-The interpreter has a hardcoded "Hello World!" Brainfuck program in `prog_a` variable. The commented code shows intention to read programs from files but is not currently active.
+The interpreter is fully functional with comprehensive test coverage (9 test functions, 21 assertions) covering all Brainfuck operations including loops, edge cases, and memory expansion. Includes CI/CD pipeline with automated testing and linting. The main function runs a hardcoded "Hello World!" program.

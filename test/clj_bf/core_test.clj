@@ -77,3 +77,17 @@
           result (interpret hello-world)]
       (is (vector? result))
       (is (> (count result) 0)))))
+
+(deftest test-file-input
+  (testing "interpreter works with file input"
+    (let [result (interpret (slurp "examples/simple_copy.bf"))]
+      (is (= [0 3] result))))
+  
+  (testing "simple addition from file"
+    (let [result (interpret (slurp "examples/simple_addition.bf"))]
+      (is (= [5 0] result))))
+  
+  (testing "hello world from file produces output"
+    (let [output (capture-output #(interpret (slurp "examples/simple_hello.bf")))]
+      (is (> (count output) 0))
+      (is (.contains output "72")))))
