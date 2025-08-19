@@ -147,6 +147,6 @@ The project includes GitHub Actions workflow that automatically:
 
 ## License
 
-Copyright © 2015
+Copyright © 2025
 
-Distributed under the Eclipse Public License either version 1.0 or (at your option) any later version.
+Distributed under the MIT License. See LICENSE file for details.
