@@ -1,6 +1,6 @@
 (ns clj-bf.core-test
-  (:require [clojure.test :refer :all]
-            [clj-bf.core :refer :all]))
+  (:require [clojure.test :refer [deftest is testing]]
+            [clj-bf.core :refer [interpret]]))
 
 (defn capture-output [f]
   (let [out (java.io.StringWriter.)]

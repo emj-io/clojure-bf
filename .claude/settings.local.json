@@ -13,7 +13,8 @@
       "Bash(export:*)",
       "Bash(lein:*)",
       "Bash(gh pr:*)",
-      "Bash(timeout 10 lein test)"
+      "Bash(timeout 10 lein test)",
+      "Bash(mkdir:*)"
     ],
     "deny": [],
     "ask": [],

@@ -53,7 +53,7 @@
 
 ;;(def prog_a "+++[>+<-]")
 (def prog_a "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")
-(defn -main [& args]
+(defn -main [& _args]
       (println (interpret prog_a)))
 
 ;; Read from file
