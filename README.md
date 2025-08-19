@@ -35,7 +35,11 @@ lein deps
 ### Run the Hello World program
 
 ```bash
+# Run built-in Hello World program
 lein run
+
+# Run Hello World from file
+lein run examples/simple_hello.bf
 ```
 
 ### Build standalone JAR
@@ -43,6 +47,18 @@ lein run
 ```bash
 lein uberjar
 java -jar target/uberjar/clj-bf-*-standalone.jar
+```
+
+### Run example programs
+
+```bash
+# Run from files (recommended)
+lein run examples/simple_hello.bf     # Hello World
+lein run examples/simple_addition.bf  # 3+2=5  
+lein run examples/simple_copy.bf      # Copy value demo
+
+# Run with JAR
+java -jar target/uberjar/clj-bf-*-standalone.jar examples/simple_hello.bf
 ```
 
 ### Interactive use
@@ -53,8 +69,8 @@ java -jar target/uberjar/clj-bf-*-standalone.jar
 ;; Simple increment and output
 (interpret "+++.")  ; Outputs: 3
 
-;; Hello World program  
-(interpret "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")
+;; Load from file
+(interpret (slurp "examples/simple_hello.bf"))  ; Hello World
 ```
 
 ## Brainfuck Language Reference
@@ -74,19 +90,22 @@ java -jar target/uberjar/clj-bf-*-standalone.jar
 The `examples/` directory contains sample Brainfuck programs:
 
 ```bash
-# Run Hello World
-(interpret (slurp "examples/hello_world.bf"))
+# Command line usage (recommended)
+lein run examples/simple_hello.bf      # Hello World → "Hello World!"
+lein run examples/simple_addition.bf   # 3+2=5 → outputs: 5
+lein run examples/simple_copy.bf       # Copy demo → outputs: 3
 
-# Test arithmetic operations  
-(interpret (slurp "examples/addition.bf"))      # 3+2=5
-(interpret (slurp "examples/multiplication.bf")) # 2*3=6
-
-# Test language features
-(interpret (slurp "examples/nested_loops.bf"))   # Nested loop test
-(interpret (slurp "examples/memory_test.bf"))    # Memory expansion
+# REPL usage  
+(interpret (slurp "examples/simple_hello.bf"))     # Hello World
+(interpret (slurp "examples/simple_addition.bf"))  # Addition
 ```
 
-See `examples/README.md` for complete program descriptions and expected outputs.
+**Tested Examples:**
+- `simple_hello.bf` - Hello World program (outputs ASCII text)
+- `simple_addition.bf` - Addition (3+2=5, outputs: 5)  
+- `simple_copy.bf` - Value copy demo (outputs: 3)
+
+See `examples/README.md` for additional programs and descriptions.
 
 ## Development
 

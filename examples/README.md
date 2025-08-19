@@ -5,30 +5,45 @@ This directory contains sample Brainfuck programs to test the interpreter.
 ## Running Examples
 
 ```bash
+# Command line (recommended - file input functionality)
+lein run examples/simple_hello.bf
+lein run examples/simple_addition.bf
+lein run examples/simple_copy.bf
+
+# Using standalone JAR
+lein uberjar
+java -jar target/uberjar/clj-bf-*-standalone.jar examples/simple_hello.bf
+
 # Using Clojure REPL
 lein repl
 (require '[clj-bf.core :refer [interpret]])
-(interpret (slurp "examples/hello_world.bf"))
-
-# Or modify src/clj_bf/core.clj to read from file:
-# (def prog_a (slurp "examples/hello_world.bf"))
-# lein run
+(interpret (slurp "examples/simple_hello.bf"))
 ```
 
-## Programs
+## Tested Programs
 
-| File | Description | Expected Output |
-|------|-------------|-----------------|
-| `hello_world.bf` | Classic Hello World program | "Hello World!" |
-| `counter.bf` | Outputs ASCII values 0,1,2 | Numbers 0,1,2 |
-| `copy_value.bf` | Copy value 3 to next cell | Number 3 |
-| `addition.bf` | Add 3+2 | Number 5 |
-| `multiplication.bf` | Multiply 2*3 | Number 6 |
-| `nested_loops.bf` | Test nested loop functionality | Number 27 |
-| `memory_test.bf` | Test memory expansion | Number 1 |
+| File | Description | Command | Expected Output |
+|------|-------------|---------|-----------------|
+| `simple_hello.bf` | Hello World program | `lein run examples/simple_hello.bf` | "Hello World!" (ASCII 72,101,108...) |
+| `simple_addition.bf` | Add 3+2=5 | `lein run examples/simple_addition.bf` | Number 5 |
+| `simple_copy.bf` | Copy value demo | `lein run examples/simple_copy.bf` | Number 3 |
+
+## Additional Programs (with comments)
+
+| File | Description | Notes |
+|------|-------------|--------|
+| `hello_world.bf` | Commented Hello World | Contains explanatory comments |
+| `addition.bf` | Commented addition | Contains explanatory comments |
+| `copy_value.bf` | Commented copy demo | Contains explanatory comments |
+| `counter.bf` | Counter with comments | Contains explanatory comments |
+| `multiplication.bf` | Multiplication demo | Contains explanatory comments |
+| `nested_loops.bf` | Nested loops test | Contains explanatory comments |
+| `memory_test.bf` | Memory expansion test | Contains explanatory comments |
 
 ## Notes
 
-- Programs output numeric values, not ASCII characters (except Hello World)
-- To see ASCII output, use programs that generate values 32-126
-- The interpreter handles all edge cases including unmatched brackets
+- **simple_*.bf** files contain only Brainfuck code (tested and working)
+- **other .bf** files contain comments and may need comment stripping
+- Programs output numeric values as integers
+- Hello World outputs ASCII values that represent "Hello World!" text
+- All examples are tested with the interpreter's file input functionality

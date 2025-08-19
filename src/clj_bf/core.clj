@@ -63,11 +63,8 @@
 
 ;;(def prog_a "+++[>+<-]")
 (def prog_a "++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.")
-(defn -main [& _args]
-      (println (interpret prog_a)))
-
-;; Read from file
-;;  (if (nth args 0)
-;;    (interpreter (slurp (nth args 0)))
-;;    (println "usage: clojure-bf filename")))
+(defn -main [& args]
+  (if (first args)
+    (println (interpret (slurp (first args))))
+    (println (interpret prog_a))))
 
