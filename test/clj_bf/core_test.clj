@@ -24,3 +24,17 @@
 (deftest test-output
   (testing "simple output"
     (is (= "3\n" (capture-output #(interpret "+++."))))))
+
+(deftest test-decrement-operations
+  (testing "basic decrement"
+    (is (= [-1] (interpret "-"))))
+  
+  (testing "increment then decrement"
+    (is (= [1] (interpret "+++--")))))
+
+(deftest test-move-left
+  (testing "move left from position 0 stays at 0"
+    (is (= [5] (interpret "+++++<"))))
+  
+  (testing "move right then left"
+    (is (= [3 0] (interpret "+++><")))))
