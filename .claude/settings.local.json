@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(lein help:*)",
+      "Bash(clj:*)",
+      "Bash(java:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(brew install:*)",
+      "Bash(export:*)",
+      "Bash(lein:*)",
+      "Bash(gh pr:*)",
+      "Bash(timeout 10 lein test)",
+      "Bash(mkdir:*)"
+    ],
+    "deny": [],
+    "ask": [],
+    "defaultMode": "acceptEdits"
+  }
+}
