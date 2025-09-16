@@ -1,10 +1,10 @@
 # clj-bf
 
-A Brainfuck interpreter implemented in Clojure.
+A Brainf!@# interpreter implemented in Clojure.
 
 ## Overview
 
-Brainfuck is an esoteric programming language with only 8 commands that operates on a memory tape. This interpreter provides a complete implementation supporting all Brainfuck operations including loops, memory expansion, and robust error handling.
+Brainf!@# is an esoteric programming language with only 8 commands that operates on a memory tape. This interpreter provides a complete implementation supporting all Brainf!@# operations including loops, memory expansion, and robust error handling.
 
 ## Features
 
